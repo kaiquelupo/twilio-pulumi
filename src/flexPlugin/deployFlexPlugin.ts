@@ -12,7 +12,7 @@ export const deployFlexPlugin = async (attributes: any) => {
         attributes, 
         ({ absolutePath, envs}:any) => `
             cd ${absolutePath} && 
-            npm install && 
+            npm install --legacy-peer-deps && 
             TWILIO_ACCOUNT_SID=${TWILIO_ACCOUNT_SID} TWILIO_AUTH_TOKEN=${TWILIO_AUTH_TOKEN} ${envs} npm run deploy
         `
     );
@@ -24,7 +24,7 @@ export const runFlexPluginsTests = async (attributes: any) => {
         attributes,
         ({absolutePath, envs}:any) => `
             cd ${absolutePath} && 
-            npm install && 
+            npm install --legacy-peer-deps && 
             CI=true ${envs} npm run test
         `
     );
